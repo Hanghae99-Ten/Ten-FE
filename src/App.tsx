@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/Globalstyle';
 import { Theme } from './styles/theme';
 import Reset from './styles/Reset';
-import Layout from './layout/Layout';
+import Router from './routes/Router';
 
 const  App:React.FC = () => {
 
@@ -13,7 +13,7 @@ const  App:React.FC = () => {
     <ThemeProvider theme={theme}>
     <Reset />
     <GlobalStyle />
-       <Layout/>
+       <Router/>
     </ThemeProvider>
   )
 }

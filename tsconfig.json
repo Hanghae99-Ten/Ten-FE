@@ -24,7 +24,9 @@
     /* Absolute path */
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["src/layouts/*"]
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@layout/*": ["src/layout/*"],
     }
   },
   "include": [".eslintrc.cjs", "src"],

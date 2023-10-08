@@ -27,6 +27,7 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@layout/*": ["src/layout/*"],
+      "@pages/*": ["src/pages/*"]
     }
   },
   "include": [".eslintrc.cjs", "src"],

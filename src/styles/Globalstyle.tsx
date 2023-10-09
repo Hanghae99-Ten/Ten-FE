@@ -1,8 +1,9 @@
-import { createGlobalStyle } from "styled-components";
-import PyeongChangBold from "@assets/PyeongChang-Bold.woff"
-import PretendardSemiBold from "@assets/fonts/Pretendard-SemiBold.woff"
-import PretendardRegular from "@assets/fonts/Pretendard-Regular.woff"
+import { createGlobalStyle } from 'styled-components';
 
+// assets
+import PyeongChangBold from 'assets/PyeongChang-Bold.woff';
+import PretendardSemiBold from 'assets/fonts/Pretendard-SemiBold.woff';
+import PretendardRegular from 'assets/fonts/Pretendard-Regular.woff';
 
 export const GlobalStyle = createGlobalStyle`
 *{

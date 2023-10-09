@@ -1,8 +1,6 @@
-// import original module declarations
-import "styled-components";
+import 'styled-components';
 
-// and extend them!
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme {
     Title_48_bold;
     Header_18_bold;
@@ -20,20 +18,19 @@ declare module "styled-components" {
     bgColor2: string;
     color: string;
     color2: string;
-    white:  string;
-    black:  string;
-    gray:   string;
+    white: string;
+    black: string;
+    gray: string;
     yellow: string;
     blue: string;
     pink: string;
-    primary_easy: string,
-    primary_normal:  string;
+    primary_easy: string;
+    primary_normal: string;
     primary_strong: string;
     primary_heavy: string;
     primary_altemative: string;
-    primary_assistive:  string;
-    dark_beige: string,
-    Alternative: string,
+    primary_assistive: string;
+    dark_beige: string;
+    Alternative: string;
   }
 }
-

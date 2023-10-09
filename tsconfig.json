@@ -1,35 +1,27 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
+    "baseUrl": "src",
+    "target": "es6",
+    "lib": ["es6", "dom"],
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noEmit": true,
+    "allowJs": true,
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": false,
     "allowSyntheticDefaultImports": true,
-
-    /* Absolute path */
-    "baseUrl": ".",
-    "paths": {
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
-      "@layout/*": ["src/layout/*"],
-      "@pages/*": ["src/pages/*"]
-    }
+    "forceConsistentCasingInFileNames": true
   },
-  "include": [".eslintrc.cjs", "src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.svg"],
+  "exclude": ["node_modules"]
 }

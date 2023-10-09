@@ -1,17 +1,17 @@
 import { DefaultTheme, css } from 'styled-components';
 
-const colorTheme: DefaultTheme = {
+const colors: DefaultTheme['colors'] = {
   white: '#fff',
   black: '#000000',
   blue: '#4836FF',
   purple: '#A341FF',
   pink: '#FF5D98',
   yellow: '#FFE2B8',
-  gary1: '#F6F6F6',
-  gary2: '#DBDBDB',
-  gary3: '#9A9A9A',
-  gary4: '#878787',
-  gary5: '#4D4D4D',
+  gray1: '#F6F6F6',
+  gray2: '#DBDBDB',
+  gray3: '#9A9A9A',
+  gray4: '#878787',
+  gray5: '#4D4D4D',
 };
 
 // 타이틀에서 사용
@@ -90,7 +90,7 @@ const BoxCenter = css`
 `;
 
 const theme = {
-  colorTheme,
+  colors,
   Title_48_bold,
   Header_18_bold,
   Body_700_24,
@@ -104,7 +104,6 @@ const theme = {
   FlexCenter,
   BoxCenter,
 };
-
 export const Theme: DefaultTheme = {
   ...theme,
   bgColor: '#f1f3f5',

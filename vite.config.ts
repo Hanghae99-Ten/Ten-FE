@@ -11,6 +11,8 @@ export default defineConfig({
       { find: 'components', replacement: '/src/components' },
       { find: 'layout', replacement: '/src/layout' },
       { find: 'pages', replacement: '/src/pages' },
+      { find: 'styles', replacement: '/src/styles' },
+      { find: 'shared', replacement: '/src/shared' },
     ],
   },
 });

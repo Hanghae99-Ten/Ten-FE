@@ -1,19 +1,17 @@
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from './styles/Globalstyle';
-import { Theme } from './styles/theme';
-import Reset from './styles/Reset';
-import Router from './shared/router';
 
-const App: React.FC = () => {
-  const theme = Theme;
+// assets
+import { Reset, GlobalStyle, Theme } from 'styles';
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Reset />
-      <GlobalStyle />
-      <Router />
-    </ThemeProvider>
-  );
-};
+// project import
+import Router from 'shared/Router';
+
+const App = () => (
+  <ThemeProvider theme={Theme}>
+    <Reset />
+    <GlobalStyle />
+    <Router />
+  </ThemeProvider>
+);
 
 export default App;

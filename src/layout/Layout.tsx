@@ -1,17 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Layout = () => (
+export const Layout = () => (
   <MainCard>
     <Outlet />
   </MainCard>
 );
 
-export default Layout;
-
 const MainCard = styled.main`
   width: 100%;
-  min-height: 67.5rem;
+  height: 100vh;
   ${({ theme }) => theme.FlexCol};
   ${({ theme }) => theme.FlexCenter};
   background-color: ${({ theme }) => theme.bgColor};

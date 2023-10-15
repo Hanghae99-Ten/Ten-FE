@@ -1,33 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
-// assets
-import PyeongChangBold from 'assets/PyeongChang-Bold.woff';
-import PretendardSemiBold from 'assets/fonts/Pretendard-SemiBold.woff';
-import PretendardRegular from 'assets/fonts/Pretendard-Regular.woff';
-
 export const GlobalStyle = createGlobalStyle`
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-@font-face {
-  font-family: "PyeongChang-Bold";
-  font-style: normal;
-  src: url(${PyeongChangBold}) format("woff");
-}
-
-@font-face {
-  font-family: "Pretendard-SemiBold";
-  font-style: normal;
-  src: url(${PretendardSemiBold}) format("woff");
-}
-
-@font-face {
-  font-family: "Pretendard-Regular";
-  font-style: normal;
-  src: url(${PretendardRegular}) format("woff");
 }
 
 body {

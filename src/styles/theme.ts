@@ -104,6 +104,7 @@ const theme = {
   FlexCenter,
   BoxCenter,
 };
+
 export const Theme: DefaultTheme = {
   ...theme,
   bgColor: '#f1f3f5',

@@ -1,4 +1,9 @@
+import React, { useState, useRef, useMemo } from 'react';
 import styled from 'styled-components';
+
+import { Form, Formik, Field, ErrorMessage, FormikProps } from 'formik';
+
+import * as Yup from 'yup';
 
 import PP_SingInLogo from 'assets/PP_Logo.png';
 import Mail from 'assets/icons/mail.svg?react';
@@ -9,7 +14,26 @@ import NaverLogo from 'assets/oauth2/naver.svg?react';
 
 import { Button } from 'element/Button';
 
+interface SignValue {
+  email: string;
+  pw: string;
+}
+
+// 유효성 검사를 위한 yup
+const ValidationSchema = Yup.object().shape({
+  email: Yup.string()
+    .required('이메일을 입력해주세요.')
+    .matches(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i, '올바른 이메일 형식이 아닙니다.'),
+  password: Yup.string()
+    .required('비밀번호를 입력해주세요.')
+    .matches(/^[0-9a-zA-Z]{8,}$/, '비밀번호는 영문/숫자만 가능, 8자 이상입니다.'),
+});
+
 export const SignIn = () => {
+  // const [isSubmitting, setSubmitting] = useState(false);
+
+  const CurrentRef = useRef();
+
   const Kakao_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_SIGN_ID}&redirect_uri=${
     import.meta.env.VITE_KAKAO_RESCUEPETS
   }&response_type=code`;
@@ -25,8 +49,16 @@ export const SignIn = () => {
     window.location.href = Naver_URL;
   };
 
-  const Signin = () => {
-    console.log('d');
+  const LoginValues: SignValue = useMemo(
+    () => ({
+      email: '',
+      pw: '',
+    }),
+    []
+  );
+
+  const onSubmit = async (values: any, actions: any) => {
+    alert('회원가입 submit 완료');
   };
 
   return (
@@ -36,37 +68,38 @@ export const SignIn = () => {
           <img src={PP_SingInLogo} alt="SingInLogo" />
         </LogoArea>
         <Oauth2Area>
-          <Button signInBtnType="kakao" type="button" onClick={() => kakaoSignUp()}>
+          <KakaoLoginBtn onClick={() => kakaoSignUp()}>
             <KakaoLogo />
             <p>카카오로 로그인</p>
-          </Button>
-          <Button signInBtnType="naver" type="button" onClick={() => NaverSignUp()}>
+          </KakaoLoginBtn>
+
+          <NaverLoginBtn onClick={() => NaverSignUp()}>
             <NaverLogo />
             <p>네이버로 로그인</p>
-          </Button>
+          </NaverLoginBtn>
         </Oauth2Area>
         <Br>
           <div />
           <p>또는</p>
           <div />
         </Br>
-        <InputArea>
-          <div>
-            <MailIcon />
-            <input placeholder="이메일 주소" type="text" />
-            <TextDeleteIcon />
-          </div>
-          <div>
-            <PassWordIcon />
-            <input placeholder="비밀번호" type="password" />
-            <TextDeleteIcon />
-          </div>
 
-          <Button signInBtnType="sign" type="summit" onClick={() => Signin()}>
-            로그인
-          </Button>
-        </InputArea>
-
+        <Formik initialValues={LoginValues} onSubmit={onSubmit} validationSchema={ValidationSchema}>
+          
+          <FormArea>
+            <div>
+              <MailIcon />
+              <Field type="email" name="email" placeholder="이메일 주소" />
+              <TextDeleteIcon />
+            </div>
+            <div>
+              <PassWordIcon />
+              <Field type="password" name="pw" placeholder="비밀번호" />
+              <TextDeleteIcon />
+            </div>
+            <LoginButton type="submit">로그인</LoginButton>
+          </FormArea>
+        </Formik>
         <LoginSubArea>
           <div>
             <p>비밀번호 재설정</p>
@@ -98,6 +131,11 @@ const LogoArea = styled.div`
   width: 100%;
   height: 150px;
   ${({ theme }) => theme.BoxCenter}
+  > img {
+    width: 126px;
+    height: 107px;
+    transform: rotate(-35deg);
+  }
 `;
 
 const Oauth2Area = styled.div`
@@ -124,7 +162,7 @@ const Br = styled.div`
   }
 `;
 
-const InputArea = styled.form`
+const FormArea = styled(Form)`
   width: 420px;
   height: 242px;
   ${({ theme }) => theme.FlexCol};
@@ -142,7 +180,7 @@ const InputArea = styled.form`
       height: 100%;
       outline: none;
       padding: 0;
-      border: 1px solid #9a9a9a;
+      border: 1px solid ${({ theme }) => theme.colors.gray3};
       border-radius: 6px;
       padding-left: 64px;
       font-size: 20px;
@@ -152,7 +190,6 @@ const InputArea = styled.form`
         color: ${({ theme }) => theme.colors.gray4};
       }
     }
-
     > .delete {
       z-index: 10;
       cursor: pointer;
@@ -207,5 +244,41 @@ const LoginSubArea = styled.div`
       ${(props) => props.theme.Body_700_16};
       font-weight: 500;
     }
+  }
+`;
+
+const KakaoLoginBtn = styled(Button)`
+  width: 420px;
+  background-color: #f8e652;
+  ${({ theme }) => theme.Body_500_24};
+  gap: 10px;
+  color: #3a1c1c;
+  &:hover {
+    transition: all 0.2s ease-out;
+    transform: scale(1.02);
+  }
+`;
+
+const NaverLoginBtn = styled(Button)`
+  width: 420px;
+  background-color: #65ce40;
+  ${({ theme }) => theme.Body_500_24};
+  gap: 10px;
+  color: ${({ theme }) => theme.colors.white};
+  &:hover {
+    transition: all 0.2s ease-out;
+    transform: scale(1.02);
+  }
+`;
+
+const LoginButton = styled(Button)`
+  width: 420px;
+  background-color: ${({ theme }) => theme.colors.blue};
+  ${({ theme }) => theme.Body_500_24};
+  gap: 0 10px;
+  color: ${({ theme }) => theme.colors.white};
+  &:hover {
+    transition: all 0.2s ease-out;
+    transform: scale(1.02);
   }
 `;

@@ -1,10 +1,16 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
+// project import
+import { Header } from 'layout';
+
 export const Layout = () => (
-  <MainCard>
-    <Outlet />
-  </MainCard>
+  <>
+    <Header />
+    <MainCard>
+      <Outlet />
+    </MainCard>
+  </>
 );
 
 const MainCard = styled.main`

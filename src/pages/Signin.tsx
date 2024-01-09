@@ -1,15 +1,4 @@
-import {
-  Button,
-  Container,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  Stack,
-  TextField,
-  Typography,
-  InputAdornment,
-} from '@mui/material';
+import { Button, Container, FormControl, FormControlLabel, Stack, TextField, InputAdornment } from '@mui/material';
 import styled from 'styled-components';
 
 import PP_SingInLogo from 'assets/PP_Logo.png';
@@ -20,20 +9,43 @@ import KakaoLogo from 'assets/icons/kakao.svg?react';
 import NaverLogo from 'assets/icons/naver.svg?react';
 
 export const Signin = () => {
-  console.log('d');
+  const Kakao_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_SIGN_ID}&redirect_uri=${
+    import.meta.env.VITE_KAKAO_RESCUEPETS
+  }&response_type=code`;
+
+  const Naver_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${import.meta.env.VITE_NAVER_CLIENT_ID}&state=${
+    import.meta.env.VITE_NAVER_API_SECRET
+  }&redirect_uri=${import.meta.env.VITE_NAVER_RESCUEPETS}`;
+
+  const kakaoSignUp = () => {
+    window.location.href = Kakao_URL;
+  };
+
+  const NaverSignUp = () => {
+    window.location.href = Naver_URL;
+  };
+
   return (
     <Container maxWidth="sm">
       <Stack sx={{ mb: 10 }} alignItems="center">
         <Logo src={PP_SingInLogo} alt="SingInLogo" />
-        {/* <Typography sx={{ textAlign: 'center', fontWeight: 'bold', fontSize: 28 }}>회원가입</Typography> */}
       </Stack>
+
       <Stack spacing={2} sx={{ mb: 2 }} alignItems="center">
         <Stack spacing={2}>
-          <Button variant="contained" sx={{ width: '420px', height: 69, fontSize: 24, fontWeight: 'bold', backgroundColor: '#F8E652;' }}>
+          <Button
+            variant="contained"
+            sx={{ width: '420px', height: 69, fontSize: 24, fontWeight: 'bold', backgroundColor: '#F8E652;' }}
+            onClick={() => kakaoSignUp()}
+          >
             <KakaoLogo style={{ marginRight: '18px' }} />
             카카오로 로그인하기
           </Button>
-          <Button variant="contained" sx={{ width: '420px', height: 69, fontSize: 24, fontWeight: 'bold', backgroundColor: '#65CE40;' }}>
+          <Button
+            variant="contained"
+            sx={{ width: '420px', height: 69, fontSize: 24, fontWeight: 'bold', backgroundColor: '#65CE40;' }}
+            onClick={() => NaverSignUp()}
+          >
             <NaverLogo style={{ marginRight: '18px' }} />
             네이버로 로그인하기
           </Button>
@@ -92,8 +104,8 @@ export const Signin = () => {
 };
 
 const Logo = styled.img`
-  width: 126px;
-  height: 107px;
+  width: 160px;
+  height: 160px;
   transform: rotate(-35deg);
 `;
 

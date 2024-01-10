@@ -1,10 +1,12 @@
 import { useMemo } from 'react';
-import { Button, Container, Stack, TextField, InputAdornment } from '@mui/material';
 import styled from 'styled-components';
-
 import { Form, Formik, ErrorMessage, FormikProps } from 'formik';
 import * as Yup from 'yup';
 
+// material-ui
+import { Button, Container, Stack, TextField, InputAdornment } from '@mui/material';
+
+// assets
 import PP_SingInLogo from 'assets/PP_Logo.png';
 import Mail from 'assets/icons/mail.svg?react';
 import PassWord from 'assets/icons/password.svg?react';
@@ -29,7 +31,7 @@ const ValidationSchema = Yup.object().shape({
     ),
 });
 
-export const Signin = () => {
+export const SignIn = () => {
   const Kakao_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_SIGN_ID}&redirect_uri=${
     import.meta.env.VITE_KAKAO_RESCUEPETS
   }&response_type=code`;
@@ -104,7 +106,7 @@ export const Signin = () => {
             handleSubmit,
             isSubmitting,
             setFieldValue,
-            /* and other goodies */
+
           }) => {
             // input 값 삭제 로직
             const onDeleteValue = (inputName: string) =>

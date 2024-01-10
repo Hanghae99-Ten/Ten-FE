@@ -1,4 +1,4 @@
 export * from './Home';
-export * from './Signin';
+export * from './SignIn';
 export * from './SignUp';
 export * from './Post';

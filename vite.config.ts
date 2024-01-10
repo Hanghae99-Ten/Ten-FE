@@ -13,6 +13,7 @@ export default defineConfig({
       { find: 'pages', replacement: '/src/pages' },
       { find: 'styles', replacement: '/src/styles' },
       { find: 'shared', replacement: '/src/shared' },
+      { find: 'store', replacement: '/src/store' },
     ],
   },
 });

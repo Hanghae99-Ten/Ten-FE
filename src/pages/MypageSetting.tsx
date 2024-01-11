@@ -24,7 +24,7 @@ export const MypageSetting = () => {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 30 }}>
+    <Container maxWidth="lg" sx={{ mt: 25, ml: 25, border: '1px solid red' }}>
       <BackGoMypage>
         <Left />
         <Typography sx={{ fontSize: 20, fontWeight: 600, alignContent: 'center' }}>마이페이지</Typography>
@@ -111,7 +111,7 @@ export const MypageSetting = () => {
           </ListItemButton>
         </Stack>
 
-        <Stack sx={{ width: '792px', height: '789px' }} alignItems="center">
+        <Stack sx={{ width: '792px', height: '789px', border: '1px solid red' }} alignItems="center">
           21
         </Stack>
       </Stack>

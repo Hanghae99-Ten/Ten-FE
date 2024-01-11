@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 // project import
 import { Header } from 'layout';
+import { Stack } from '@mui/material';
 
 export const Layout = () => (
   <>
     <Header />
     <MainCard>
+      <Stack sx={{ minHeight: '80px', padding: 1, width: '100%' }} />
       <Outlet />
     </MainCard>
   </>

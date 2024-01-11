@@ -14,6 +14,10 @@ const colors: DefaultTheme['colors'] = {
   gray5: '#4D4D4D',
 };
 
+const shadow: DefaultTheme['shadow'] = {
+  boxshadow1: '0px 0px 7px 0px rgba(0, 0, 0, 0.15)',
+};
+
 // 타이틀에서 사용
 const Title_48_bold = css`
   font-size: 3rem;
@@ -91,6 +95,7 @@ const BoxCenter = css`
 
 const theme = {
   colors,
+  shadow,
   Title_48_bold,
   Header_18_bold,
   Body_700_24,

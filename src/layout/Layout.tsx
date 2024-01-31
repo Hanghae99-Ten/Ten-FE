@@ -17,7 +17,7 @@ export const Layout = () => (
 
 const MainCard = styled.main`
   width: 100%;
-  height: 100vh;
+  height: 1216px;
   ${({ theme }) => theme.FlexCol};
   ${({ theme }) => theme.FlexCenter};
   background-color: ${({ theme }) => theme.bgColor};

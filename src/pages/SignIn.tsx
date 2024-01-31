@@ -97,17 +97,7 @@ export const SignIn = () => {
         </Stack>
 
         <Formik initialValues={LoginValues} onSubmit={onSubmit} validationSchema={ValidationSchema}>
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            setFieldValue,
-
-          }) => {
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue }) => {
             // input 값 삭제 로직
             const onDeleteValue = (inputName: string) =>
               inputName === 'email' ? setFieldValue('email', '') : setFieldValue('password', '');
@@ -197,17 +187,3 @@ const Br = styled.div`
 const FormArea = styled.form`
   ${({ theme }) => theme.WH100};
 `;
-
-// const Continer = styled.div`
-//   width: 26.25rem;
-//   height: 47.5rem;
-//   ${({ theme }) => theme.FlexCol};
-//   ${({ theme }) => theme.FlexCenter};
-//   border: 1px solid red;
-// `;
-
-// const ImgArea = styled.div`
-//   width: 100%;
-//   height: 9.375rem;
-//   ${({ theme }) => theme.BoxCenter};
-// `;

@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // project import
 import { Layout } from 'layout';
-import { Home, Post, SignIn, SignUp } from 'pages';
+import { Home, Post, SignIn, SignUp, MypageSetting } from 'pages';
 
 const Router = () => (
   <BrowserRouter>
@@ -12,6 +12,7 @@ const Router = () => (
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/post" element={<Post />} />
+        <Route path="/mypagesetting" element={<MypageSetting />} />
       </Route>
     </Routes>
   </BrowserRouter>

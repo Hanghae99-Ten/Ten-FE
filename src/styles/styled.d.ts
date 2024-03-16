@@ -31,6 +31,6 @@ declare module 'styled-components' {
       gray4: string;
       gray5: string;
     };
-    shadow: { boxshadow1: string };
+    shadow: { boxshadow1: string; boxshadow2: string };
   }
 }

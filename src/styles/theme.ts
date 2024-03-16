@@ -16,6 +16,7 @@ const colors: DefaultTheme['colors'] = {
 
 const shadow: DefaultTheme['shadow'] = {
   boxshadow1: '0px 0px 7px 0px rgba(0, 0, 0, 0.15)',
+  boxshadow2: '0px 0px 10px 0px rgba(0, 0, 0, 0.25)',
 };
 
 // 타이틀에서 사용

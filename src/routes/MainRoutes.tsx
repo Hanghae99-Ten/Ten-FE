@@ -9,10 +9,10 @@ import { Layout } from 'layout';
 const MaintenanceError = Loadable(lazy(() => import('pages/errorBoundary/ErrorPage')));
 
 // 메인 페이지
-const Home = Loadable(lazy(() => import('pages/Home')));
-const SignIn = Loadable(lazy(() => import('pages/SignIn')));
-const SignUp = Loadable(lazy(() => import('pages/SignUp')));
-const Post = Loadable(lazy(() => import('pages/Post')));
+const Home = Loadable(lazy(() => import('pages/home/Home')));
+const SignIn = Loadable(lazy(() => import('pages/auth/SignIn')));
+const SignUp = Loadable(lazy(() => import('pages/auth/SignUp')));
+const PlanPost = Loadable(lazy(() => import('pages/planPost/PlanPost')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -38,8 +38,8 @@ const MainRoutes = {
           element: <SignUp />,
         },
         {
-          path: '/post',
-          element: <Post />,
+          path: '/plan-post',
+          element: <PlanPost />,
         },
       ],
     },

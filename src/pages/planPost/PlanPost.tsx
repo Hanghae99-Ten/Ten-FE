@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // project import
 import { PostHeader } from 'components';
 
-const Post = () => (
+const PlanPost = () => (
   <PostWrapper>
     <PostHeader />
     <div id="postContents">Post</div>
@@ -15,4 +15,4 @@ const PostWrapper = styled.div`
   justify-content: flex-start;
 `;
 
-export default Post;
+export default PlanPost;

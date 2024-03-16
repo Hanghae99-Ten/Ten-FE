@@ -56,7 +56,7 @@ export const Header = () => {
               <Link to="/">ㅇㅇㅇㅇ</Link>
             </li>
             <li>
-              <Link to="/post">계획생성</Link>
+              <Link to="/plan-post">계획생성</Link>
             </li>
             <li>
               <Link to="/">마이여행</Link>

@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
+import { useState ,useEffect } from 'react';
 import styled from 'styled-components';
-import { Form, Formik, ErrorMessage, FormikProps } from 'formik';
+import { ErrorMessage, useFormik } from 'formik';
 import * as Yup from 'yup';
 
 // material-ui
@@ -10,16 +10,10 @@ import { Button, Container, Stack, TextField, InputAdornment } from '@mui/materi
 import PP_SingInLogo from 'assets/PP_Logo.png';
 import Mail from 'assets/icons/mail.svg?react';
 import PassWord from 'assets/icons/password.svg?react';
-import TextDelete from 'assets/icons/textDelete.svg?react';
 import KakaoLogo from 'assets/icons/kakao.svg?react';
 import NaverLogo from 'assets/icons/naver.svg?react';
 
-interface SignValue {
-  email: string;
-  password: string;
-}
-
-const ValidationSchema = Yup.object().shape({
+const validationSchema = Yup.object().shape({
   email: Yup.string()
     .required('이메일을 입력해주세요.')
     .matches(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i, '올바른 이메일 형식이 아닙니다.'),
@@ -31,7 +25,34 @@ const ValidationSchema = Yup.object().shape({
     ),
 });
 
+
+
 export const SignIn = () => {
+
+  const initialValues = {
+    email: '',
+    password: ''
+  };
+  
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: async (values, { setSubmitting }) => {
+      console.log(values)
+      // setSubmitting(false) 비동기 로직이 끝나면 추가하기 
+    },
+  });
+  
+
+  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+
+  useEffect(() => {
+    if(formik.values.email?.length > 5 && formik.values.password?.length > 6){
+        setIsDisabled(false)
+      }
+}, [formik.values.email, formik.values.password]);
+
+
   const Kakao_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_SIGN_ID}&redirect_uri=${
     import.meta.env.VITE_KAKAO_RESCUEPETS
   }&response_type=code`;
@@ -46,20 +67,6 @@ export const SignIn = () => {
 
   const NaverSignUp = () => {
     window.location.href = Naver_URL;
-  };
-
-  const LoginValues: SignValue = useMemo(
-    () => ({
-      email: '',
-      password: '',
-    }),
-    []
-  );
-
-  const onSubmit = async (values: any, actions: any) => {
-    console.log(values);
-    console.log(actions);
-    alert('회원가입 submit 완료');
   };
 
   return (
@@ -80,6 +87,7 @@ export const SignIn = () => {
           </Button>
           <Button
             variant="contained"
+            
             sx={{ width: '420px', height: 69, fontSize: 24, fontWeight: 'bold', backgroundColor: '#65CE40;' }}
             onClick={() => NaverSignUp()}
           >
@@ -96,25 +104,17 @@ export const SignIn = () => {
           </Br>
         </Stack>
 
-        <Formik initialValues={LoginValues} onSubmit={onSubmit} validationSchema={ValidationSchema}>
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue }) => {
-            // input 값 삭제 로직
-            const onDeleteValue = (inputName: string) =>
-              inputName === 'email' ? setFieldValue('email', '') : setFieldValue('password', '');
-
-            return (
-              <FormArea onSubmit={handleSubmit}>
-                <Stack spacing={1} alignItems="center">
-                  <TextField
-                    type="email"
-                    name="email"
-                    placeholder="이메일 주소"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                    helperText="아이디가 일치하지 않습니다."
-                    sx={{ width: '420px', height: 69, fontSize: 24 }}
-                    InputProps={{
+           <FormArea onSubmit={formik.handleSubmit}>
+              <Stack spacing={1} alignItems="center">
+                <TextField
+                  type="email"
+                  name="email"
+                  placeholder="이메일 주소"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.email}
+                  sx={{ width: '420px', height: 69, fontSize: 24 }}
+                  InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
                           <Mail />
@@ -126,10 +126,10 @@ export const SignIn = () => {
                     type="password"
                     name="password"
                     placeholder="비밀번호"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.password}
-                    helperText="비밀번호가 일치하지 않습니다."
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.password}
+                    // helperText="비밀번호가 일치하지 않습니다."
                     sx={{ width: '420px', height: 69, fontSize: 24 }}
                     InputProps={{
                       startAdornment: (
@@ -144,6 +144,7 @@ export const SignIn = () => {
                   <Button
                     variant="contained"
                     type="submit"
+                    disabled={isDisabled}
                     sx={{ width: '420px', height: 69, fontSize: 24, fontWeight: 'bold', backgroundColor: '#4836FF' }}
                     // disabled
                   >
@@ -151,13 +152,11 @@ export const SignIn = () => {
                   </Button>
                 </Stack>
               </FormArea>
-            );
-          }}
-        </Formik>
-        <Stack sx={{ width: '420px' }} direction="row" justifyContent="space-around">
-          <p>비밀번호 찾기</p>
-          <p>회원가입</p>
-        </Stack>
+
+         <Stack sx={{ width: '420px' }} direction="row" justifyContent="space-around">
+           <p>비밀번호 찾기</p>
+           <p>회원가입</p>
+         </Stack>
       </Stack>
     </Container>
   );

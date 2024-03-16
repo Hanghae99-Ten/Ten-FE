@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 // assets
-import Search from 'assets/icons/Search.svg?react';
-import HeaderLogo from 'assets/icons/PP_Header_Logo.svg?react';
+import { ReactComponent as Search } from 'assets/icons/Search.svg';
+import { ReactComponent as HeaderLogo } from 'assets/icons/PP_Header_Logo.svg';
 
 // project import
 import { DarkModeToggle } from 'components';

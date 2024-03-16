@@ -8,9 +8,9 @@ import { useEffect, useState } from 'react';
 import 'dayjs/locale/ko';
 
 // assets
-import PlusButton from 'assets/icons/PlusButton.svg?react';
-import Share from 'assets/icons/Share.svg?react';
-import Edit from 'assets/icons/Edit.svg?react';
+import { ReactComponent as PlusButton } from 'assets/icons/PlusButton.svg';
+import { ReactComponent as Share } from 'assets/icons/Share.svg';
+import { ReactComponent as Edit } from 'assets/icons/Edit.svg';
 
 export const PostHeader = () => {
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs(new Date()));

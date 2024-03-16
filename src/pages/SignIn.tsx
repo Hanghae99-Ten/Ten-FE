@@ -1,18 +1,17 @@
 import { useMemo } from 'react';
 import styled from 'styled-components';
-import { Form, Formik, ErrorMessage, FormikProps } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 // material-ui
-import { Button, Container, Stack, TextField, InputAdornment } from '@mui/material';
+import { Button, Container, InputAdornment, Stack, TextField } from '@mui/material';
 
 // assets
 import PP_SingInLogo from 'assets/PP_Logo.png';
-import Mail from 'assets/icons/mail.svg?react';
-import PassWord from 'assets/icons/password.svg?react';
-import TextDelete from 'assets/icons/textDelete.svg?react';
-import KakaoLogo from 'assets/icons/kakao.svg?react';
-import NaverLogo from 'assets/icons/naver.svg?react';
+import { ReactComponent as Mail } from 'assets/icons/mail.svg';
+import { ReactComponent as PassWord } from 'assets/icons/password.svg';
+import { ReactComponent as KakaoLogo } from 'assets/icons/kakao.svg';
+import { ReactComponent as NaverLogo } from 'assets/icons/naver.svg';
 
 interface SignValue {
   email: string;
@@ -97,17 +96,7 @@ export const SignIn = () => {
         </Stack>
 
         <Formik initialValues={LoginValues} onSubmit={onSubmit} validationSchema={ValidationSchema}>
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            setFieldValue,
-
-          }) => {
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue }) => {
             // input 값 삭제 로직
             const onDeleteValue = (inputName: string) =>
               inputName === 'email' ? setFieldValue('email', '') : setFieldValue('password', '');
@@ -183,11 +172,13 @@ const Br = styled.div`
   ${({ theme }) => theme.WH100};
   ${({ theme }) => theme.BoxCenter};
   gap: 0 10px;
+
   div {
     width: 180px;
     height: 1px;
     background-color: ${({ theme }) => theme.colors.gray4};
   }
+
   p {
     color: ${({ theme }) => theme.colors.gray4};
     ${({ theme }) => theme.Header_18_bold};

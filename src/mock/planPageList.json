@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "planId": 1000,
+      "startDate": "2024-03-16 13:00",
+      "endDate": "2024-03-20 13:00",
+      "title": "한지윤과 함께하는 서울여행",
+      "totalPrice": 120000,
+      "image": "https://offloadmedia.feverup.com/secretseoul.com/wp-content/uploads/2022/09/07213245/shutterstock_692827960_12008800-1024x683.jpg",
+      "users": [
+        {
+          "userId": 10,
+          "userName": "김선중",
+          "userProfileImg": "https://images.mypetlife.co.kr/content/uploads/2023/02/03094318/AdobeStock_366413112-1024x682.jpeg"
+        },
+        {
+          "userId": 2,
+          "userName": "양혜원"
+        },
+        {
+          "userId": 12,
+          "userName": "한지윤"
+        }
+      ]
+    },
+    {
+      "planId": 1002,
+      "startDate": "2024-03-18 13:00",
+      "endDate": "2024-03-21 13:00",
+      "title": "이현동과 함께하는 서울여행",
+      "totalPrice": 200000,
+      "image": "https://dimg.donga.com/wps/NEWS/IMAGE/2019/05/09/95424151.5.jpg",
+      "users": [
+        {
+          "userId": 13,
+          "userName": "이현동"
+        },
+        {
+          "userId": 21,
+          "userName": "김지훈"
+        },
+        {
+          "userId": 14,
+          "userName": "김영준"
+        }
+      ]
+    }
+  ]
+}

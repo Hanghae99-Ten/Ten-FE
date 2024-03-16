@@ -1,0 +1,107 @@
+{
+  "startDate": "2024-03-16 13:00",
+  "endDate": "2024-03-20 13:00",
+  "planTitle": "한지윤과 함께하는 서울여행",
+  "users": [
+    {
+      "userId": 10,
+      "userName": "김선중"
+    },
+    {
+      "userId": 2,
+      "userName": "양혜원"
+    },
+    {
+      "userId": 12,
+      "userName": "한지윤"
+    }
+  ],
+  "postsByDate": [
+    {
+      "date": "2024-03-16",
+      "totalPrice": 2500,
+      "posts": [
+        {
+          "placeName": "경복궁",
+          "location": "서울특별시 강남구 어쩌구 1로 1444호",
+          "star": 5.0,
+          "price": 1000,
+          "reviews": [
+            {
+              "userId": 10,
+              "userProfileImg": "http://sun.jpg",
+              "userName": "김선중",
+              "images": ["http://abcde.jpg"],
+              "content": "너 내 도도도도도도도도도도돋",
+              "star": 3.5
+            },
+            {
+              "userId": 2,
+              "userProfileImg": "http://one.jpg",
+              "userName": "양혜원",
+              "images": [
+                "http://abcde.jpg",
+                "http://aaaaa.jpg"
+              ],
+              "content": "짱짱 카페의 커피는 생각보다 맛없었다. 디저트는 추천임",
+              "star": 4
+            }
+          ]
+        },
+        {
+          "placeName": "광장시장",
+          "location": "서울특별시 종로구 창경궁로 88",
+          "star": 4.5,
+          "price": 1500,
+          "reviews": [
+            {
+              "userId": 12,
+              "userProfileImg": "http://JJi.jpg",
+              "userName": "한지윤",
+              "images": [
+                "http://bbbbbb.jpg",
+                "http://ccccc.jpg"
+              ],
+              "content": "바가지가 너무 심함",
+              "star": 1.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2024-03-17",
+      "totalPrice": 1000,
+      "posts": [
+        {
+          "placeName": "경복궁",
+          "location": "서울특별시 강남구 어쩌구 1로 1444호",
+          "star": 5.0,
+          "price": 1000,
+          "reviews": [
+            {
+              "userId": 10,
+              "userProfileImg": "http://sunsun.jpg",
+              "userName": "김선중",
+              "content": "너 내 도도도도도도도도도도돋",
+              "images": [
+                "http://ddddd.jpg",
+                "http://eeeee.jpg"
+              ],
+              "star": 3.5
+            },
+            {
+              "userId": 2,
+              "userProfileImg": "http://oneone.jpg",
+              "userName": "양혜원",
+              "content": "짱짱 카페의 커피는 생각보다 맛없었다. 디저트는 추천임",
+              "images": [
+              ],
+              "star": 4
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

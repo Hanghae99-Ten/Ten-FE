@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // project import
 import { PostHeader } from 'components';
 
-export const Post = () => (
+const Post = () => (
   <PostWrapper>
     <PostHeader />
     <div id="postContents">Post</div>
@@ -14,3 +14,5 @@ const PostWrapper = styled.div`
   ${({ theme }) => theme.WH100};
   justify-content: flex-start;
 `;
+
+export default Post;

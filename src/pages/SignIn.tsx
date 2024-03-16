@@ -30,7 +30,7 @@ const ValidationSchema = Yup.object().shape({
     ),
 });
 
-export const SignIn = () => {
+const SignIn = () => {
   const Kakao_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_KAKAO_SIGN_ID}&redirect_uri=${
     import.meta.env.VITE_KAKAO_RESCUEPETS
   }&response_type=code`;
@@ -202,3 +202,5 @@ const FormArea = styled.form`
 //   height: 9.375rem;
 //   ${({ theme }) => theme.BoxCenter};
 // `;
+
+export default SignIn;

@@ -1,47 +1,42 @@
-import { lazy } from 'react';
+import { createElement, lazy } from 'react';
 
 // project import
 import Loadable from 'components/Loadable';
 import PagesLayout from 'layout/Pages';
 import { Layout } from 'layout';
+import { DefaultSeoHeader } from 'routes/seo/header';
+import { MainRoutesConstants } from 'routes/MainRoutesConstants';
 
 // types
 const MaintenanceError = Loadable(lazy(() => import('pages/errorBoundary/ErrorPage')));
 
-// 메인 페이지
-const Home = Loadable(lazy(() => import('pages/home/Home')));
-const SignIn = Loadable(lazy(() => import('pages/auth/SignIn')));
-const SignUp = Loadable(lazy(() => import('pages/auth/SignUp')));
-const PlanPost = Loadable(lazy(() => import('pages/planPost/PlanPost')));
-
 // ==============================|| MAIN ROUTING ||============================== //
-
 const MainRoutes = {
   path: '/',
   errorElement: <MaintenanceError />,
   element: <PagesLayout />,
   children: [
     {
-      path: '/',
       element: <Layout />,
-      children: [
-        {
-          path: '/',
-          element: <Home />,
-        },
-        {
-          path: '/signin',
-          element: <SignIn />,
-        },
-        {
-          path: '/signup',
-          element: <SignUp />,
-        },
-        {
-          path: '/plan-post',
-          element: <PlanPost />,
-        },
-      ],
+      children: Object.entries(MainRoutesConstants).map(([PATH, DATA]) => {
+        let children;
+        if (DATA.CHILDREN) {
+          children = DATA.CHILDREN.map((child) => ({
+            path: child.PATH,
+            element: createElement(child.ELEMENT),
+          }));
+        }
+        return {
+          path: PATH,
+          element: (
+            <>
+              {createElement(DATA.COMPONENT)}
+              {createElement(DATA.SEO_HEADER ?? DefaultSeoHeader)}
+            </>
+          ),
+          children,
+        };
+      }),
     },
   ],
 };

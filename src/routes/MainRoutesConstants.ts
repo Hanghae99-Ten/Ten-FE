@@ -65,7 +65,7 @@ export const MainRoutesConstants: RouteMap = Object.freeze({
     ROUTE: true,
     CHILDREN: [
       {
-        PATH: '/:planId',
+        PATH: ':planId',
         ELEMENT: Plan,
       },
     ],

@@ -25,7 +25,7 @@ export interface IRouteConfig {
 
 interface IChildrenElements {
   PATH: string;
-  ELEMENT: () => JSX.Element;
+  ELEMENT: (props: any) => JSX.Element;
 }
 
 type RouteMap = Record<string, Readonly<IRouteConfig>>;

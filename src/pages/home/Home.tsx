@@ -27,7 +27,7 @@ const Home = () => {
     <MainCard fullHeight fullWidth sx={{ padding: 3 }}>
       <Stack direction="row" spacing={1}>
         {planPageList.map((plan) => (
-          <DefaultCard key={plan.planId} sx={{ width: 300, p: 0, '&:hover': { bgcolor: theme.colors.gray1 } }}>
+          <DefaultCard key={plan.planId} isHover isBoxShadow sx={{ width: 300, p: 0, transition: '0.1s ease' }}>
             <Link to={`/plane/${plan.planId}`}>
               <Stack sx={{ width: 'auto', padding: 3 }} spacing={1}>
                 <CardMedia component="img" image={plan.image} sx={{ borderRadius: 2, width: '100%', height: 200 }} />

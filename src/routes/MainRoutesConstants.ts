@@ -6,12 +6,14 @@ const Home = Loadable(lazy(() => import('pages/home/Home')));
 const SignIn = Loadable(lazy(() => import('pages/auth/SignIn')));
 const SignUp = Loadable(lazy(() => import('pages/auth/SignUp')));
 const PlanPost = Loadable(lazy(() => import('pages/planPost/PlanPost')));
+const Plan = Loadable(lazy(() => import('pages/Plan/Plan')));
 
 export enum RouteEnum {
   HOME = '/',
   SIGNIN = '/signin',
   SIGNUP = '/signup',
   PLANPOST = '/plan-post',
+  PLANREVIEW = '/plane',
 }
 
 export interface IRouteConfig {
@@ -55,6 +57,18 @@ export const MainRoutesConstants: RouteMap = Object.freeze({
     SEO_HEADER: PlanPostHeader,
     TITLE: '여행계획',
     ROUTE: true,
+  },
+  [RouteEnum.PLANREVIEW]: {
+    COMPONENT: Plan,
+    SEO_HEADER: PlanPostHeader,
+    TITLE: '여행리뷰',
+    ROUTE: true,
+    CHILDREN: [
+      {
+        PATH: '/:planId',
+        ELEMENT: Plan,
+      },
+    ],
   },
 });
 

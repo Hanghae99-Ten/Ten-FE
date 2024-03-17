@@ -16,27 +16,27 @@ import { addCommas } from 'utile/formatUtils';
 const Home = () => {
   const theme = useTheme();
 
-  const { data: reviewListData } = useQuery({
-    queryKey: ['reviewListData'],
+  const { data: planPageListData } = useQuery({
+    queryKey: ['planPageListData'],
     queryFn: async () => (await getPlanePageList()).data,
   });
 
-  const reviewList = reviewListData || [];
+  const planPageList = planPageListData || [];
 
   return (
     <MainCard fullHeight fullWidth sx={{ padding: 3 }}>
       <Stack direction="row" spacing={1}>
-        {reviewList.map((item) => (
-          <DefaultCard key={item.planId} sx={{ width: 300, p: 0, '&:hover': { bgcolor: theme.colors.gray1 } }}>
-            <Link to="/">
+        {planPageList.map((plan) => (
+          <DefaultCard key={plan.planId} sx={{ width: 300, p: 0, '&:hover': { bgcolor: theme.colors.gray1 } }}>
+            <Link to={`/plane/${plan.planId}`}>
               <Stack sx={{ width: 'auto', padding: 3 }} spacing={1}>
-                <CardMedia component="img" image={item.image} sx={{ borderRadius: 2, width: '100%', height: 200 }} />
-                <Typography sx={{ fontSize: '1.1rem', fontWeight: 600 }}>{item.title}</Typography>
+                <CardMedia component="img" image={plan.image} sx={{ borderRadius: 2, width: '100%', height: 200 }} />
+                <Typography sx={{ fontSize: '1.1rem', fontWeight: 600 }}>{plan.title}</Typography>
                 <Stack direction="row" alignItems="center" spacing={0.5} width="100%">
                   <Typography variant="caption" color={theme.colors.gray4} lineHeight="normal">
                     총 비용
                   </Typography>
-                  <Typography>{addCommas(item.totalPrice)}</Typography>
+                  <Typography>{addCommas(plan.totalPrice)}</Typography>
                   <AvatarGroup
                     max={2}
                     sx={{
@@ -44,13 +44,13 @@ const Home = () => {
                       '& .MuiAvatar-root': { width: 24, height: 24, fontSize: 15 },
                     }}
                   >
-                    {item.users.map((user) => (
+                    {plan.users.map((user) => (
                       <Avatar key={user.userId} alt={`${user.userName}-${user.userId}`} src={user.userProfileImg} />
                     ))}
                   </AvatarGroup>
                 </Stack>
                 <Typography variant="body2" sx={{ color: theme.colors.gray3 }}>
-                  {dayjs(item.startDate).format('YYYY-MM-DD')} - {dayjs(item.endDate).format('YYYY-MM-DD')}
+                  {dayjs(plan.startDate).format('YYYY-MM-DD')} - {dayjs(plan.endDate).format('YYYY-MM-DD')}
                 </Typography>
               </Stack>
             </Link>
@@ -61,4 +61,4 @@ const Home = () => {
   );
 };
 
-export  default Home
+export default Home;
